@@ -1,0 +1,12 @@
+<li id="tweet-<%= tweet.id %>">
+  <%= link_to gravatar_for(tweet.user, size: 50), tweet.user %>
+  <span class="user"><%= link_to tweet.user.name, tweet.user %></span>
+  <span class="content"><%= tweet.content %></span>
+  <span class="timestamp">
+    <%= time_ago_in_words(tweet.created_at) %> ago.
+    <% if current_user == tweet.user %>
+      <%= link_to "削除", tweet, method: :delete,
+                                data: { confirm: "削除してもよろしいですか？" } %>
+    <% end %>
+  </span>
+</li>

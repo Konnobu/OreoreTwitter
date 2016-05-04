@@ -1,5 +1,19 @@
-<h1>
-    <%= gravatar_for @user %>
-    <%= @user.name %>
-    <%= link_to 'プロフィールを編集', edit_user_path(@user) %>
-</h1>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+        <%= link_to 'プロフィールを編集', edit_user_path(@user) %>
+      </h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <% if @user.tweets.any? %>
+      <h3>Tweets (<%= @user.tweets.count %>)</h3>
+      <ol class="tweets">
+        <%= render @tweets %>
+      </ol>
+    <% end %>
+  </div>
+</div>
