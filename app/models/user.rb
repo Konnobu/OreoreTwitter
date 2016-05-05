@@ -31,4 +31,9 @@ class User < ActiveRecord::Base
   def following?(other_user)
     following_users.include?(other_user)
   end
+
+  # 自分とフォローしているユーザのつぶやきを取得する
+  def feed_items
+    Tweet.where(user_id: following_user_ids + [self.id])
+  end
 end
